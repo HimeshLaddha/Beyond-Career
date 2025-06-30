@@ -9,7 +9,7 @@ const Hero = () => {
   };
 
   const handleWatchDemo = () => {
-    // You can replace this with actual video modal or redirect to demo video
+    // replace this with actual video modal or redirect to demo video
     alert('Demo video coming soon! For now, scroll down to explore our services.');
   };
 

@@ -61,10 +61,7 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <Facebook className="h-5 w-5" />, href: "https://facebook.com", color: "hover:text-blue-500" },
-    { icon: <Twitter className="h-5 w-5" />, href: "https://twitter.com", color: "hover:text-sky-500" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com", color: "hover:text-blue-600" },
-    { icon: <Instagram className="h-5 w-5" />, href: "https://instagram.com", color: "hover:text-pink-500" }
+    { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/company/beyondgradess", color: "hover:text-blue-600" }
   ];
 
   const validateForm = () => {
