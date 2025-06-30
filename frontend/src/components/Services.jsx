@@ -175,7 +175,7 @@ const Services = () => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="text-center bg-dark-800 p-6 rounded-2xl border border-gray-700 hover:border-primary-500/50 transition-all duration-300 transform hover:scale-105 group"
+                className="text-center bg-dark-800 py-6 px-2 rounded-2xl border border-gray-700 hover:border-primary-500/50 transition-all duration-300 transform hover:scale-105 group"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Icon */}
@@ -184,12 +184,12 @@ const Services = () => {
                 </div>
 
                 {/* Number */}
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                <div className="md:text-xl text-md font-bold text-white mb-2">
                   {stat.number}
                 </div>
 
                 {/* Label */}
-                <div className="text-gray-400 font-medium">
+                <div className="text-gray-400 font-medium text-sm sm:text-md text-center">
                   {stat.label}
                 </div>
               </div>

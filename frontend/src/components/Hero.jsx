@@ -14,7 +14,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden md:py-10 pt-20 sm:py-0">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700"></div>
       <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg')] bg-cover bg-center opacity-10"></div>
@@ -27,19 +27,12 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8">
-          {/* Badge */}
-          {/* <div className="fade-in">
-            <div className="inline-flex items-center px-4 py-2 bg-dark-800/50 rounded-full border border-primary-500/30 backdrop-blur-sm glow-border">
-              <Award className="h-4 w-4 text-primary-500 mr-2" />
-              <span className="text-sm text-gray-300">Founded by IIT Kharagpur Students</span>
-            </div>
-          </div> */}
 
           {/* Main Headline */}
           <div className="fade-in fade-in-delay-1">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="gradient-text block">Beyond Career</span>
-              <span className="text-white block slide-in-right">Starts Here</span>
+              <span className="mt-3 text-white text-4xl md:text-5xl lg:text-6xl block slide-in-right">ALL ABOUT YOUR DREAMS</span>
             </h1>
           </div>
 
@@ -100,12 +93,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Animated Scroll indicator */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer" onClick={handleStartJourney}>
-        <div className="w-6 h-10 border-2 border-primary-500 rounded-full flex justify-center pulse-glow">
-          <div className="w-1 h-3 bg-primary-500 rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div> */}
     </section>
   );
 };
