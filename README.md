@@ -6,7 +6,7 @@ Beyond Career is a sleek, modern career support platform that empowers students 
 
 ## 🌐 Live Website
 
-🔗 [Visit the Live Site](https://beyond-career-a4i6kgm41-himeshladdha-gmailcoms-projects.vercel.app/)
+🔗 [Visit the Live Site](https://beyond-career-one.vercel.app/)
 
 > Mobile-friendly, animated interface with a fully functional contact form and email integration.
 
