@@ -68,6 +68,7 @@ const Contact = () => {
   ];
 
   const validateForm = () => {
+    const API_URL = import.meta.env.VITE_API_URL;
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
@@ -91,7 +92,7 @@ const Contact = () => {
 
   setIsSubmitting(true);
   try {
-    const response = await fetch("http://localhost:5000/api/contact", {
+    const response = await fetch(`${API_URL}/api/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
