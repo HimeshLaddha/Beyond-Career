@@ -12,9 +12,10 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://beyond-career-one.vercel.app'],
+  origin: 'https://beyond-career-one.vercel.app', // include your frontend URLs
   methods: ['GET', 'POST'],
-  credentials: true,
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
 app.use(express.json());
 
