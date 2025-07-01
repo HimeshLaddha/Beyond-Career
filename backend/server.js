@@ -10,12 +10,16 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'https://beyond-career-one.vercel.app', // ✅ your frontend deployed domain
+    methods: ['GET', 'POST'],
+    credentials: true,
+}));
 app.use(express.json());
 
 // Routes
 app.use('/api/contact', require('./routes/contact'));
-app.use('/', (req, res)=> res.send("Backend is running"));
+app.use('/', (req, res) => res.send("Backend is running"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
