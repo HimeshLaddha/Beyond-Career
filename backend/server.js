@@ -6,13 +6,13 @@ const connectDB = require('./config/db');
 dotenv.config();
 const app = express();
 
-// Connect DB
+// Connect to MongoDB
 connectDB();
 
-// Middleware
+// ✅ Recommended CORS Setup
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://beyond-career-one.vercel.app' // your production frontend
+  'https://beyond-career-one.vercel.app',
 ];
 
 app.use(cors({
@@ -20,17 +20,21 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('CORS Not Allowed'));
+      console.error("Blocked by CORS:", origin);
+      callback(new Error('Not allowed by CORS'));
     }
   },
-  methods: ['GET', 'POST'],
-  credentials: true
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
+
 app.use(express.json());
 
 // Routes
 app.use('/api/contact', require('./routes/contact'));
 app.use('/', (req, res) => res.send("Backend is running"));
 
+// Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
