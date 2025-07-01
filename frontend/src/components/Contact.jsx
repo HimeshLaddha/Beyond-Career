@@ -65,7 +65,6 @@ const Contact = () => {
   ];
 
   const validateForm = () => {
-    const API_URL = import.meta.env.VITE_API_URL;
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
@@ -76,6 +75,8 @@ const Contact = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
