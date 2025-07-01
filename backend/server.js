@@ -10,10 +10,21 @@ const app = express();
 connectDB();
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://beyond-career-one.vercel.app' // your production frontend
+];
+
 app.use(cors({
-    origin: 'https://beyond-career-one.vercel.app', // ✅ your frontend deployed domain
-    methods: ['GET', 'POST'],
-    credentials: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS Not Allowed'));
+    }
+  },
+  methods: ['GET', 'POST'],
+  credentials: true
 }));
 app.use(express.json());
 
