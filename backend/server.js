@@ -7,17 +7,21 @@ const route = require('./routes/contact')
 dotenv.config();
 const app = express();
 
-// Connect to MongoDB
+// Connect to DB
 connectDB();
 
-
-app.use(cors());
+// Middleware
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://beyond-career-one.vercel.app'],
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
 app.use(express.json());
 
 // Routes
 app.use('/api/contact', route);
-app.use('/', (req, res) => res.send("Backend is running"));
 
-// Server
+app.get('/', (req, res) => res.send('Backend is running'));
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
   try {
     await mongoose.connect(`${process.env.MONGO_URI}/beyond-career`);
-    console.log('✅ MongoDB connected!');
+    console.log('MongoDB connected!');
   } catch (err) {
-    console.error('❌ MongoDB connection error:', err.message);
+    console.error(err.message);
     process.exit(1);
   }
 };
