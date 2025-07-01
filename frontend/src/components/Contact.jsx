@@ -76,8 +76,6 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const API_URL = import.meta.env.VITE_API_URL;
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -85,45 +83,46 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!validateForm()) return;
+    const API_URL = import.meta.env.VITE_API_URL;
+    e.preventDefault();
+    if (!validateForm()) return;
 
-  setIsSubmitting(true);
-  try {
-    const response = await fetch(`${API_URL}/api/contact`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
-      toast.success("Message sent successfully! 🎉");
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-    } else {
-      toast.error("Something went wrong. Please try again.");
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Message sent successfully! 🎉");
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Server error. Please try again later.");
     }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    toast.error("Server error. Please try again later.");
-  }
 
-  setIsSubmitting(false);
+    setIsSubmitting(false);
 
-  setTimeout(() => {
-    setIsSubmitted(false);
-  }, 3000);
-};
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 3000);
+  };
 
   return (
     <section id="contact" className="py-20 bg-dark-900">
