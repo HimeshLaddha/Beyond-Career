@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -88,18 +89,16 @@ const Contact = () => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+
     try {
-      const response = await fetch(`${API_URL}/api/contact/`, {
-        method: "POST",
+      const { data } = await axios.post(`${API_URL}/api/contact/`, formData, {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        withCredentials: true,
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (data.success) {
         toast.success("Message sent successfully! 🎉");
         setIsSubmitted(true);
         setFormData({
@@ -118,11 +117,11 @@ const Contact = () => {
     }
 
     setIsSubmitting(false);
-
     setTimeout(() => {
       setIsSubmitted(false);
     }, 3000);
   };
+
 
   return (
     <section id="contact" className="py-20 bg-dark-900">
