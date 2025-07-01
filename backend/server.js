@@ -9,26 +9,8 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// ✅ Recommended CORS Setup
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://beyond-career-one.vercel.app',
-];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.error("Blocked by CORS:", origin);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
-
+app.use(cors());
 app.use(express.json());
 
 // Routes
